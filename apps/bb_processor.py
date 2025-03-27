@@ -43,9 +43,9 @@ class IdentifiableModel(BaseModel):
     id: UUID4
 
     @field_serializer('id')
-    def serialize_uuid(uuid: UUID4) -> str:
+    def serialize_uuid(self: UUID4) -> str:
         """Serialize the UUID to string."""
-        return str(uuid)
+        return str(self)
 
 
 class Postcard(IdentifiableModel):
@@ -72,13 +72,9 @@ class Media(IdentifiableModel):
 class ImageMedia(Media):
     """Image media model."""
 
-    pass
-
 
 class VideoMedia(Media):
     """Video media model."""
-
-    pass
 
 
 class Species(IdentifiableModel):
@@ -128,7 +124,7 @@ class SightingReport(BaseModel):
     sightings: list[SightingRecognizedBird | SightingCantDecideWhichBird]
 
     @field_validator('report_token')
-    def validate_report_token(cls: SightingReport, value: str) -> str:
+    def validate_report_token(self: SightingReport, value: str) -> str:
         """Validate the report token."""
         if value:
             try:
@@ -380,4 +376,3 @@ if __name__ == '__main__':
     formatter: ReportFormatter = ReportFormatter.from_yaml('birds_event.yml')
     report: AutomationReport = formatter.report
     slack_message = formatter.format_slack_message()
-    pass

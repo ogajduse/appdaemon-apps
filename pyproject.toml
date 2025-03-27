@@ -84,6 +84,11 @@ select = [
   "SLF",
   "TRY",
   "UP",
+  "N",    # PEP8 naming conventions
+  "S",    # Security (bandit)
+  "A",    # Builtins shadowing prevention
+  "BLE",  # Blind except prevention
+  "PIE",  # Miscellaneous helpful rules
 ]
 # Q000,ANN,PT009,D,E501,
 ignore = [
@@ -93,6 +98,7 @@ ignore = [
   "D213",   # Multi-line docstring summary should start at the first line
   "FBT001", # Boolean positional argument in function definition
   "COM812", # Missing trailing comma, this is handled by the formatter
+  "S101", # Use of assert detected
 ]
 # Allow autofix for all enabled rules (when `--fix`) is provided.
 fixable = ["ALL"]
