@@ -1,0 +1,78 @@
+{
+  "postcard": {
+    "id": "8394704c-97a7-4a02-9fca-ca6242618535",
+    "createdAt": "2024-04-06T08:08:38.055Z",
+    "__typename": "FeedItemNewPostcard"
+  },
+  "sighting": {
+    "feeder": {
+      "id": "5e509b96-45a1-4a81-8a0a-e9fdb8e101ea",
+      "name": "Ptaci bufet",
+      "state": "READY_TO_STREAM",
+      "__typename": "FeederForOwner"
+    },
+    "medias": [
+      {
+        "id": "10aa4271-138b-4548-9446-f284d53b16ea",
+        "createdAt": "2024-04-06T08:08:36.208Z",
+        "thumbnailUrl": "https://media.app-api-graphql.app-api.prod.aws.mybirdbuddy.com/media/feeder/5e509b96-45a1-4a81-8a0a-e9fdb8e101ea/media/10aa4271-138b-4548-9446-f284d53b16ea/THUMBNAIL.jpg?Expires=1712477731&Key-Pair-Id=K3RVEEZFTAGH36&Signature=FeTe%7E3C0qgjv58GFobvEmLRrRCUTzgideghdPtkyC1UzYFbDpOAy-iqkX5RW7IJOarrzsxR5mcxElJoii7mZWinZtsmL2vEIWhUTofrfqOHw30Dkh7X6vAEfDV3NvbVjoeRDKoBl1d7iGvwVmLL5%7EZli3xV8qrELh2dquXbdaP-q4roYzM9pmWXIsi-GbW-udYRQHBDeat648%7EBP7vE-rYZSPFwiJV0Dw3ZqwyGKyBjhltcW1mbicGkAXKqV3m3iaGut%7EN9UHbfzVnE87mX5RaegshP1JcGbxnk3Rwdha6SbOcd0L4qX29V8tc32nhh3wZHvWNA5%7EYfTsPFhqX-Hfw__",
+        "contentUrl": "https://media.app-api-graphql.app-api.prod.aws.mybirdbuddy.com/media/feeder/5e509b96-45a1-4a81-8a0a-e9fdb8e101ea/media/10aa4271-138b-4548-9446-f284d53b16ea/CONTENT.jpg?Expires=1712477731&Key-Pair-Id=K3RVEEZFTAGH36&Signature=h4PWKH14OF2ZiL2Mn0eJ0J-HHebdugGzG39LpJj70H4hM49r-iZm5BTciPqqK3zy-gwf7CX4DV8xlXtItOHeLz2J0jQ7jgH01Ew2CdnIPMysyoPOXO0xNB5hyQcejnbBzONPzf4OVnQDcUrnTQ1TCrU-b-tl5UuEWCTW%7EeH34W9HAdEvlIV4S7z7nvY6lBkEZ4yRhCCfJHmMsBYiXw3adrlDyMEsNRXYD8EmU8yY5GQEvkS4FvhDa%7EcL82sbmvakECRcygQXQBdQwQdm4NGZeYe89ECEjB8mF-WdcLIYQlvrfloji72O8RXrZu3boTUIm3iY3J2WsN1cxDfNIFRgQQ__",
+        "__typename": "MediaImage"
+      },
+      {
+        "id": "97db9757-f18e-4f50-bd99-9ce4e7f91abb",
+        "createdAt": "2024-04-06T08:08:36.208Z",
+        "thumbnailUrl": "https://media.app-api-graphql.app-api.prod.aws.mybirdbuddy.com/media/feeder/5e509b96-45a1-4a81-8a0a-e9fdb8e101ea/media/97db9757-f18e-4f50-bd99-9ce4e7f91abb/THUMBNAIL.jpg?Expires=1712477731&Key-Pair-Id=K3RVEEZFTAGH36&Signature=vMT5pSJmPl1l1d2EdwiSM9QOd7EoLMK4ccbhVg3SHFb06PhATuJMRhtP7D4CwbO4e2ln1l2ceqd%7Ex3IqivmRij5fF9GGIl3%7EPF012IV3yNxW4xp0iX1jISb9KoDzJ53IYRVzLHWWjnPM5GjJinxIE5xzDrqcFYKEKEufnHR0dGba6%7E2DstqbQuUioqRkdC5-T%7Eqp0NR18mmR-e4JrdZuSzzT-OWAvXIVIq-Cw5nvgLCdn9sqJg8iKI8OBV9QSc4nqnQenv-FUemF9qYVZ23Dlo3UacmrC4YnUTg6FRGYNFOVQ9xhovUstDl9RzS3%7EdmnHDnlkWIdFtrKjTdnHa5MLA__",
+        "contentUrl": "https://media.app-api-graphql.app-api.prod.aws.mybirdbuddy.com/media/feeder/5e509b96-45a1-4a81-8a0a-e9fdb8e101ea/media/97db9757-f18e-4f50-bd99-9ce4e7f91abb/CONTENT.jpg?Expires=1712477731&Key-Pair-Id=K3RVEEZFTAGH36&Signature=ZCKLnXlA4cVF%7EY4ES0pTpD4LzoklolZomTLyKR-QWy9pQTkngqxkl4gUTktq6aYgrdJwDBfNB7mFJAjij9VDD4xQGHQwF34-6w5tC7obaww0kGqDOYzqgFLuZtLZjsELmfX3xIMLq%7EDjLacMaZZYkfsT8bHq4924JdpcQUc5wTw-GFEoXhEhvcDrJSjt8Zvmm7cieoU%7EptxFWLeP67Nl7ltX9No88pIdi0mWbXrRMv6YbO13zR1cCvH0tvp6371-MXuFJyn2xOYu5Zel0eTIHbSgPMjuuxYvPmW%7EuXUsKOkmos9OhmMqhW6bWB3oLaFrgPw-BkNmEJM6vXduz1FOGw__",
+        "__typename": "MediaImage"
+      },
+      {
+        "id": "716dadba-79b9-40a0-b968-238330b4e841",
+        "createdAt": "2024-04-06T08:08:36.208Z",
+        "thumbnailUrl": "https://media.app-api-graphql.app-api.prod.aws.mybirdbuddy.com/media/feeder/5e509b96-45a1-4a81-8a0a-e9fdb8e101ea/media/716dadba-79b9-40a0-b968-238330b4e841/THUMBNAIL.jpg?Expires=1712477731&Key-Pair-Id=K3RVEEZFTAGH36&Signature=nbDGFZtM798PJEFiIuCSv1Haox4ikX3AsxJ9aIWEn8yypMMVZAYFGuk8rWTJ0ZxCTNpiLUMbo6BugoQoRXqJfYg-eu31vtw3M7qTWxexrbZ6ZxS0xXLalrlKTucPv6aYk8F-F-ubaH4S3RLMaVHUPRBfYVHSZQGsCKVNc7tf9afiw2jpZqdOvdeFDKtrFDXMm9-LpEuHMEogrgEVPjt5ZkzzKDEh%7EwMSbCuGEWGBrp-7Z0oQlz8ZiHw50ZuF9MOiZRpD%7EvVo95pBo7E73XR6kSDKZYDCtF%7EjUqmqqK0FADYAnxJlaGLNQb3pi-FVTSYvLDK9A3mxlBcekljogR5AIQ__",
+        "contentUrl": "https://media.app-api-graphql.app-api.prod.aws.mybirdbuddy.com/media/feeder/5e509b96-45a1-4a81-8a0a-e9fdb8e101ea/media/716dadba-79b9-40a0-b968-238330b4e841/CONTENT.jpg?Expires=1712477731&Key-Pair-Id=K3RVEEZFTAGH36&Signature=VTX7armkM47UgVyjrZpjWTeP7WHMdSMC3nTBdq5VJurFdgDAZQLpzCfV7Km2Uyl337bPE9bssrqC5VjOFSm40-n1dPdQdT848YFLlgFdwTTJoJj3cyFvLfbwATlw-L2XMpF4azSat%7EqmKKGZa78P8uAIYlFzwcyqgu-2%7E09ktlCdZ6Clm936XtKRz2E%7E57K86yZU598lMM2HJxFru4du4KwqnGEHZgMg38kBTFOHTX3WO8tQwjctpdSO9pFva16-aYV3ooPVtkLhx7%7EPw%7EsQLPTBJ6gkdLgcZwhOrO-KEF%7E%7EAtTI77bZHmNOTXJVcFCIOGTWcaJKv0NBxmihnR3QRw__",
+        "__typename": "MediaImage"
+      }
+    ],
+    "sightingReport": {
+      "reportToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXBvcnRUb2tlbiI6IntcImZlZWRlcklkXCI6XCI1ZTUwOWI5Ni00NWExLTRhODEtOGEwYS1lOWZkYjhlMTAxZWFcIixcInJlcG9ydEl0ZW1zXCI6W3tcIm1hdGNoVG9rZW5cIjpcIjEwYWE0MjcxLTEzOGItNDU0OC05NDQ2LWYyODRkNTNiMTZlYVwiLFwiaXRlbXNcIjpbe1wiY29uZmlkZW5jZVwiOjEwMCxcInNwZWNpZXNDb2RlXCI6XCIyMzIyZDYxMS1jOTA3LTQ2YWEtYTIzZC0xMWYxZTNiNWE5NGZcIixcInR5cGVcIjpcIkJJUkRcIn0se1wiY29uZmlkZW5jZVwiOjAsXCJzcGVjaWVzQ29kZVwiOlwiODU1YWUwMDItZTE2MS00Y2FmLWJiMDgtNjU0MWZlYTBjYWU0XCIsXCJ0eXBlXCI6XCJCSVJEXCJ9LHtcImNvbmZpZGVuY2VcIjowLFwic3BlY2llc0NvZGVcIjpcIjI2ODg1YmMyLWZiNTMtNGJiZi1hNmQzLTE3ZTFjNGFkMGZlNVwiLFwidHlwZVwiOlwiQklSRFwifSx7XCJjb25maWRlbmNlXCI6MCxcInNwZWNpZXNDb2RlXCI6XCJhMGU0ZDExMC1hNjk2LTQwOWItODY1NS1jNTVkMzNkNjQyYTJcIixcInR5cGVcIjpcIkJJUkRcIn0se1wiY29uZmlkZW5jZVwiOjAsXCJzcGVjaWVzQ29kZVwiOlwiMGUwMTM5MzgtZmEyYi00MTQ0LWE2MzAtMjViMWNlOTRiMDliXCIsXCJ0eXBlXCI6XCJCSVJEXCJ9XX0se1wibWF0Y2hUb2tlblwiOlwiOTdkYjk3NTctZjE4ZS00ZjUwLWJkOTktOWNlNGU3ZjkxYWJiXCIsXCJpdGVtc1wiOlt7XCJjb25maWRlbmNlXCI6MTAwLFwic3BlY2llc0NvZGVcIjpcIjIzMjJkNjExLWM5MDctNDZhYS1hMjNkLTExZjFlM2I1YTk0ZlwiLFwidHlwZVwiOlwiQklSRFwifSx7XCJjb25maWRlbmNlXCI6MCxcInNwZWNpZXNDb2RlXCI6XCI4NTVhZTAwMi1lMTYxLTRjYWYtYmIwOC02NTQxZmVhMGNhZTRcIixcInR5cGVcIjpcIkJJUkRcIn0se1wiY29uZmlkZW5jZVwiOjAsXCJzcGVjaWVzQ29kZVwiOlwiMjY4ODViYzItZmI1My00YmJmLWE2ZDMtMTdlMWM0YWQwZmU1XCIsXCJ0eXBlXCI6XCJCSVJEXCJ9LHtcImNvbmZpZGVuY2VcIjowLFwic3BlY2llc0NvZGVcIjpcImEwZTRkMTEwLWE2OTYtNDA5Yi04NjU1LWM1NWQzM2Q2NDJhMlwiLFwidHlwZVwiOlwiQklSRFwifSx7XCJjb25maWRlbmNlXCI6MCxcInNwZWNpZXNDb2RlXCI6XCIwZTAxMzkzOC1mYTJiLTQxNDQtYTYzMC0yNWIxY2U5NGIwOWJcIixcInR5cGVcIjpcIkJJUkRcIn1dfSx7XCJtYXRjaFRva2VuXCI6XCI3MTZkYWRiYS03OWI5LTQwYTAtYjk2OC0yMzgzMzBiNGU4NDFcIixcIml0ZW1zXCI6W3tcImNvbmZpZGVuY2VcIjoxMDAsXCJzcGVjaWVzQ29kZVwiOlwiMjMyMmQ2MTEtYzkwNy00NmFhLWEyM2QtMTFmMWUzYjVhOTRmXCIsXCJ0eXBlXCI6XCJCSVJEXCJ9LHtcImNvbmZpZGVuY2VcIjowLFwic3BlY2llc0NvZGVcIjpcIjg1NWFlMDAyLWUxNjEtNGNhZi1iYjA4LTY1NDFmZWEwY2FlNFwiLFwidHlwZVwiOlwiQklSRFwifSx7XCJjb25maWRlbmNlXCI6MCxcInNwZWNpZXNDb2RlXCI6XCIyNjg4NWJjMi1mYjUzLTRiYmYtYTZkMy0xN2UxYzRhZDBmZTVcIixcInR5cGVcIjpcIkJJUkRcIn0se1wiY29uZmlkZW5jZVwiOjAsXCJzcGVjaWVzQ29kZVwiOlwiYjYzZjk5N2EtZTgwMS00NzUwLWI4YzQtMzJlNzQ3MzJiMDI2XCIsXCJ0eXBlXCI6XCJCSVJEXCJ9LHtcImNvbmZpZGVuY2VcIjowLFwic3BlY2llc0NvZGVcIjpcImEwZTRkMTEwLWE2OTYtNDA5Yi04NjU1LWM1NWQzM2Q2NDJhMlwiLFwidHlwZVwiOlwiQklSRFwifV19XSxcIm1hbnVhbGx5Q2hhbmdlZE1hdGNoVG9rZW5zXCI6W10sXCJzaWdodGluZ3NcIjpbe1wiaWRcIjpcIjkyMzhhZTgwLTI3NDUtNDU2Yi1iODk1LTViMTBkYjQ4MDc0ZlwiLFwibWF0Y2hUb2tlbnNcIjpbXCIxMGFhNDI3MS0xMzhiLTQ1NDgtOTQ0Ni1mMjg0ZDUzYjE2ZWFcIixcIjk3ZGI5NzU3LWYxOGUtNGY1MC1iZDk5LTljZTRlN2Y5MWFiYlwiLFwiNzE2ZGFkYmEtNzliOS00MGEwLWI5NjgtMjM4MzMwYjRlODQxXCJdLFwiY291bnRcIjoxNDIsXCJzcGVjaWVzQ29kZVwiOlwiMjMyMmQ2MTEtYzkwNy00NmFhLWEyM2QtMTFmMWUzYjVhOTRmXCIsXCJfX3R5cGVcIjpcInNpZ2h0aW5nUmVjb2duaXplZFwifV0sXCJ1c2VySWRcIjpcImRiMmE1NzNiLTdkY2ItNDg5NC05MTQxLThjZjgwMWMxOGQ0NFwifSIsImlhdCI6MTcxMjM5MTMzMSwiZXhwIjoxNzE0OTgzMzMxfQ.hZzIVBlfNxmlD8MYcKwx9zCD468eIc5Y1AiNPKe8eBI",
+      "sightings": [
+        {
+          "id": "9238ae80-2745-456b-b895-5b10db48074f",
+          "matchTokens": [
+            "10aa4271-138b-4548-9446-f284d53b16ea",
+            "97db9757-f18e-4f50-bd99-9ce4e7f91abb",
+            "716dadba-79b9-40a0-b968-238330b4e841"
+          ],
+          "__typename": "SightingRecognizedBird",
+          "color": "YELLOW",
+          "text": "Whoa! Can't get enough? 1st time today!",
+          "count": 142,
+          "icon": "HEARTS",
+          "shareableMatchTokens": [
+            "10aa4271-138b-4548-9446-f284d53b16ea",
+            "97db9757-f18e-4f50-bd99-9ce4e7f91abb",
+            "716dadba-79b9-40a0-b968-238330b4e841"
+          ],
+          "species": {
+            "id": "2322d611-c907-46aa-a23d-11f1e3b5a94f",
+            "iconUrl": "https://assets.cms-api-graphql.cms-api.prod.aws.mybirdbuddy.com/asset/icon/bird/b402edff-d14d-4347-9a9c-490b2c1ed4ad_great%20spotted%20woodpecker.svg",
+            "name": "Great Spotted Woodpecker",
+            "__typename": "SpeciesBird",
+            "isUnofficialName": false,
+            "mapUrl": "https://assets.cms-api-graphql.cms-api.prod.aws.mybirdbuddy.com/asset/map/bird/b011c4e8-7936-4657-baf9-5633dd6ed304_Great%20Spotted%20Woodpecker.svg"
+          }
+        }
+      ],
+      "__typename": "SightingReport"
+    },
+    "videoMedia": {
+      "id": "f6037081-6490-46d9-a5d4-c2e18fe54e35",
+      "createdAt": "2024-04-06T08:08:37.920Z",
+      "thumbnailUrl": "https://media.app-api-graphql.app-api.prod.aws.mybirdbuddy.com/media/feeder/5e509b96-45a1-4a81-8a0a-e9fdb8e101ea/media/f6037081-6490-46d9-a5d4-c2e18fe54e35/THUMBNAIL.jpg?Expires=1712477731&Key-Pair-Id=K3RVEEZFTAGH36&Signature=RrdfRHRcM6obKfoLgBW94JdWxxcrxAWbNg77yCTTtOjboIv4rGr8Tiz9OIAppBNYsET8eUuwnF66b8Yg8LuBp05b5sfm6iswEjvcS3B7o1xigQ6RKTeEi1ZFXXnNief4EbZpsR3kM9JGQmxxijlcONguAqqhTpk8NnmgY7GxbBbezVuB6Scht6gDd42UwXbx3y7YqnewqnTo6AW-IoAlzVrjSbTpdEYyiQayFyCVVLdiS821gxqyv-B5y1oqnN2t434EJqVvleyPTiGQv%7E1WjtjVbT8fcx%7EwqdtJDfPFflm-Z8E2pLl8n04CqBHnzp4g7JCSA52gMjmOcvRcsJ819Q__",
+      "contentUrl": "https://media.app-api-graphql.app-api.prod.aws.mybirdbuddy.com/media/feeder/5e509b96-45a1-4a81-8a0a-e9fdb8e101ea/media/f6037081-6490-46d9-a5d4-c2e18fe54e35/CONTENT.mp4?Expires=1712477731&Key-Pair-Id=K3RVEEZFTAGH36&Signature=IiD0n1ChLYrUV7R9fR2TZstqAumr4kvQzVOUIFRovnAczq2E5Du3IvVvSqe8quBVdbR9JSt2zEBe-OCLcUiL5oiR1asVJT7SdLZx6G8rvJeGADZKHXVFhNSlWU1OBzUNa%7E-drilIVtDxc4911zSc1fnkovwEXHKdiJ3MYuXUsUhsxTRlsqqtZ5XUMmYtOwzaY81urrW0T8YvK3yOvflWk95QtnluvqO7389Yp2Ya6nhVhV3acLL5BV8IXV4UMMv7SIufKZfrasGo0uTUM91B6qT7WMe2jX838QhaR2njHcBWbTfqIdwuIR6Uxcf6Lhg38i2ldiUkOYLl-RyyFqqy2g__",
+      "__typename": "MediaVideo"
+    },
+    "__typename": "SightingCreateFromPostcardResult"
+  }
+}

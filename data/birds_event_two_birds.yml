@@ -1,0 +1,87 @@
+---
+postcard:
+  id: b2bdf6ec-846d-43a5-a40e-24cf340913d5
+  createdAt: "2024-04-09T07:15:01.374Z"
+  __typename: FeedItemNewPostcard
+sighting:
+  feeder:
+    id: 5e509b96-45a1-4a81-8a0a-e9fdb8e101ea
+    name: Ptaci bufet
+    state: READY_TO_STREAM
+    __typename: FeederForOwner
+  medias:
+    - id: a35b6340-e632-4da8-a063-0290884310bc
+      createdAt: "2024-04-09T07:15:00.496Z"
+      thumbnailUrl: >-
+        https://media.app-api-graphql.app-api.prod.aws.mybirdbuddy.com/media/feeder/5e509b96-45a1-4a81-8a0a-e9fdb8e101ea/media/a35b6340-e632-4da8-a063-0290884310bc/THUMBNAIL.jpg?Expires=1712733658&Key-Pair-Id=K3RVEEZFTAGH36&Signature=OIckEFS%7E26YZ7suDbp50g%7E-HZKPSeSbh%7ErllWPYnViT5ZFYlUf-cE-Wvz9vis54NnUqvnN9TpUIHglvdfg4hEB0IBz09sTDzalz9Nvwo9s8PxJbEnpet42RGze6L5ha5HPqzTy9BzIaFclVv0RrqHF5Dv3i%7E64-R1Mt5IEvHCjzOxJrUte%7EZXUivmqXRikN2okxftk06Bq8vBErK5Hf25ApAFeyDAvKrXsw2Pxz5EHIRviZQ0Humo8kmi13xfiBVfI-ooWm7rVEgw9jIlELdXZMwEYo%7EJdt8RxzuA3Paw1PPGUUCoCXyy1mV1tOeMMkmuhu55fsduJAZRaNdHFnRfQ__
+      contentUrl: >-
+        https://media.app-api-graphql.app-api.prod.aws.mybirdbuddy.com/media/feeder/5e509b96-45a1-4a81-8a0a-e9fdb8e101ea/media/a35b6340-e632-4da8-a063-0290884310bc/CONTENT.jpg?Expires=1712733658&Key-Pair-Id=K3RVEEZFTAGH36&Signature=I7sCRUEGfYFOz5wO5AxZN3aR0BA4ps34T1yBBBPQrH7xo67HFrAX5FwNI11Y-VW0l%7EFXHBTS515PAPXD7VzP8XtLm5fdyFs3LoKqj1amInujB71PXca9Hefv2WkbnOLdesiPN7BieAH1xwjdz2RwOZYUx9%7Ep4XnqZiWDeTKdr7ScwsIyCupQh%7EcR4Csl%7EWFKkT8UeCe-F05OtO6y3yHNmYyd8oDrARjO3bjLrWpr-RXuMtfba8Wq4ogoaXPaQRapRw7xgE1KiWOq0x0V4gvKwqP0HTn76T2vPeJr0jeik-mlhBXAXZ17QaUFW1fZ7DycirlFZNIlihxRGEOa%7Etd1vg__
+      __typename: MediaImage
+    - id: ea757428-9612-4ec7-95f0-5c44b7c657ef
+      createdAt: "2024-04-09T07:15:00.496Z"
+      thumbnailUrl: >-
+        https://media.app-api-graphql.app-api.prod.aws.mybirdbuddy.com/media/feeder/5e509b96-45a1-4a81-8a0a-e9fdb8e101ea/media/ea757428-9612-4ec7-95f0-5c44b7c657ef/THUMBNAIL.jpg?Expires=1712733658&Key-Pair-Id=K3RVEEZFTAGH36&Signature=ktrvg2qMB-yU6Taebs3S0WBvtFt36LVQzFxrz-p1k11fCHorqv8gTnubOfPn%7E4uC4VMepskWY5QtHcsn94Up00RtVV4UurF%7EPxlPpensShU19wKXRBsDuBfc938zzHm6rVgtcfJIOqCnJGju3NBPNMBva8-wkTqZAMtMcClVeup-MURbmINpbdxS4Uih7V1Hb6XmcPubYBAhae3Exz2MW%7EIijRToNsdnbukNQDekEWqk32we-0YEtYTLVZ1d-0wk5z0Tk1wnGPY1LaWj3fK-FM6GpMiHA8FwAtB2TY0MpI4nsyvtrsyp%7EEpcBHIoMCfoJBBh5yrjdoRCbJjy3XBytw__
+      contentUrl: >-
+        https://media.app-api-graphql.app-api.prod.aws.mybirdbuddy.com/media/feeder/5e509b96-45a1-4a81-8a0a-e9fdb8e101ea/media/ea757428-9612-4ec7-95f0-5c44b7c657ef/CONTENT.jpg?Expires=1712733658&Key-Pair-Id=K3RVEEZFTAGH36&Signature=dIf1lwUpfAPS1j-WwgTRKN06gXOfqC1Kksr0%7EN-pRcFxUIh8R86h5f2tqj3-JiAM-Uxh8twTJnXh67xuumlgx%7Elv-CBQPEr6cpIaH6ewTzdrmUGqUBCEtDTEIGKr0m7hF3wMDrBJ9GE8VFZQWyMmdw5xmFqeAAES%7ERzAm2VhAJ4gmR7SS09gSypOP8cYaDxBGlS24gvn6L8df8XLQ7RFgXSqSq5Lel0gvWkWQE-z6i9jhAlqRtteSFjtgpM-Fdx-1Ew-IMwd9vu9p-wfCCzcGtU2yIxBCSoReDf7%7E2jsmCdwzaM2EZUJAnCzArBr-o9z%7EpobA%7EpqtZXiGddHcg--QA__
+      __typename: MediaImage
+    - id: b5cd4aea-f2e9-4087-9c27-1b6a822241a2
+      createdAt: "2024-04-09T07:15:00.496Z"
+      thumbnailUrl: >-
+        https://media.app-api-graphql.app-api.prod.aws.mybirdbuddy.com/media/feeder/5e509b96-45a1-4a81-8a0a-e9fdb8e101ea/media/b5cd4aea-f2e9-4087-9c27-1b6a822241a2/THUMBNAIL.jpg?Expires=1712733658&Key-Pair-Id=K3RVEEZFTAGH36&Signature=BB7cojt2fdYddG6eVBrl2AZHMCV%7Emlegg0ulg4yNdOK7dkOL4bc-5KBEclHqM77vUmHG2agQtcC7e3xsHV8SfoAUgqvE4a1KK%7EQ1UGUvB3jiwjbTZ1y62vEK9e7KCXEOw1WE3WVEdV9miwFwk8GbBO2AkkzlERN5nw-imjwdM1dDaK5hbwrzCV2BmVwYzcUlAv1klsEvAwfZ5tlzO0FEw2-dBSbWoiKKJoJfGu6brvJhnNBs7qbZG2O0YGHTbDPtbCseZE43ZaG-xniI0JYuKWu8vdrQCW2W%7E2-orXwcCqTb41W2LCSX0UkOo6EcjxOJaUxVgdNys-4VzLwVHxUYrA__
+      contentUrl: >-
+        https://media.app-api-graphql.app-api.prod.aws.mybirdbuddy.com/media/feeder/5e509b96-45a1-4a81-8a0a-e9fdb8e101ea/media/b5cd4aea-f2e9-4087-9c27-1b6a822241a2/CONTENT.jpg?Expires=1712733658&Key-Pair-Id=K3RVEEZFTAGH36&Signature=1o2EZcSNC0%7Ez74lu%7EaHVq5dezFA4fqlGvd-hn%7EXmhyrgI-xxmMPdOp4wajHVpUJJ0atkIclGfDLmyyGFrPuBpirmBalwl4V-M54A3l2q5Jpo5KbGcN74sn%7E7TphA4%7E2pBHByF-2pKye-853OiKjcZeVn5WhugBYb6LYPf7qw7ymqgQEHw8z9GcY0GBzYG9xxxNtMn-tgnlG%7EXEttOqlEG7MrYNfdZD2ysyDi8FF7lq6pXN%7Ej88PzmE9m7f3qQl2vDIdVBLyKgGtymRGce6GDUrCgHuhUjx76uWeaGi5enLfqVkHZKDMVDqPeTLFAhwtJ1oFbmnt86kqciXVME0ZSow__
+      __typename: MediaImage
+  sightingReport:
+    reportToken: >-
+      eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXBvcnRUb2tlbiI6IntcImZlZWRlcklkXCI6XCI1ZTUwOWI5Ni00NWExLTRhODEtOGEwYS1lOWZkYjhlMTAxZWFcIixcInJlcG9ydEl0ZW1zXCI6W3tcIm1hdGNoVG9rZW5cIjpcImEzNWI2MzQwLWU2MzItNGRhOC1hMDYzLTAyOTA4ODQzMTBiY1wiLFwiaXRlbXNcIjpbe1wiY29uZmlkZW5jZVwiOjEwMCxcInNwZWNpZXNDb2RlXCI6XCI1YTg2YWEyZS00NGNmLTRkN2MtYTcwZS1hZTlkYzkzZDVjM2RcIixcInR5cGVcIjpcIkJJUkRcIn0se1wiY29uZmlkZW5jZVwiOjAsXCJzcGVjaWVzQ29kZVwiOlwiZjc3ZmU2OGEtZTkxMC00ZTQ3LThmZWUtOWZiZWJkOGRiMmJlXCIsXCJ0eXBlXCI6XCJCSVJEXCJ9LHtcImNvbmZpZGVuY2VcIjowLFwic3BlY2llc0NvZGVcIjpcImJhY2tncm91bmRcIixcInR5cGVcIjpcIlVOS05PV05cIn0se1wiY29uZmlkZW5jZVwiOjAsXCJzcGVjaWVzQ29kZVwiOlwiYjg5YWJkMTctYzk3NS00ZmZlLTlhNGMtYzllMmZkNjAxYzI1XCIsXCJ0eXBlXCI6XCJCSVJEXCJ9LHtcImNvbmZpZGVuY2VcIjowLFwic3BlY2llc0NvZGVcIjpcIjBlMDEzOTM4LWZhMmItNDE0NC1hNjMwLTI1YjFjZTk0YjA5YlwiLFwidHlwZVwiOlwiQklSRFwifV19LHtcIm1hdGNoVG9rZW5cIjpcImVhNzU3NDI4LTk2MTItNGVjNy05NWYwLTVjNDRiN2M2NTdlZlwiLFwiaXRlbXNcIjpbe1wiY29uZmlkZW5jZVwiOjk3LFwic3BlY2llc0NvZGVcIjpcImY3N2ZlNjhhLWU5MTAtNGU0Ny04ZmVlLTlmYmViZDhkYjJiZVwiLFwidHlwZVwiOlwiQklSRFwifSx7XCJjb25maWRlbmNlXCI6MyxcInNwZWNpZXNDb2RlXCI6XCI1YTg2YWEyZS00NGNmLTRkN2MtYTcwZS1hZTlkYzkzZDVjM2RcIixcInR5cGVcIjpcIkJJUkRcIn0se1wiY29uZmlkZW5jZVwiOjAsXCJzcGVjaWVzQ29kZVwiOlwiYmFja2dyb3VuZFwiLFwidHlwZVwiOlwiVU5LTk9XTlwifSx7XCJjb25maWRlbmNlXCI6MCxcInNwZWNpZXNDb2RlXCI6XCIxYjUxOGMyNi00NzIyLTRiZDktYjY3MC0xNWRlNTYzMTA0ZmJcIixcInR5cGVcIjpcIkJJUkRcIn0se1wiY29uZmlkZW5jZVwiOjAsXCJzcGVjaWVzQ29kZVwiOlwiN2U3YzUzYjktM2JlZC00NGMzLWEyM2UtNTBhNTNhNTYzMjUxXCIsXCJ0eXBlXCI6XCJCSVJEXCJ9XX0se1wibWF0Y2hUb2tlblwiOlwiYjVjZDRhZWEtZjJlOS00MDg3LTljMjctMWI2YTgyMjI0MWEyXCIsXCJpdGVtc1wiOlt7XCJjb25maWRlbmNlXCI6MTAwLFwic3BlY2llc0NvZGVcIjpcImY3N2ZlNjhhLWU5MTAtNGU0Ny04ZmVlLTlmYmViZDhkYjJiZVwiLFwidHlwZVwiOlwiQklSRFwifSx7XCJjb25maWRlbmNlXCI6MCxcInNwZWNpZXNDb2RlXCI6XCI3ZTdjNTNiOS0zYmVkLTQ0YzMtYTIzZS01MGE1M2E1NjMyNTFcIixcInR5cGVcIjpcIkJJUkRcIn0se1wiY29uZmlkZW5jZVwiOjAsXCJzcGVjaWVzQ29kZVwiOlwiYmFja2dyb3VuZFwiLFwidHlwZVwiOlwiVU5LTk9XTlwifSx7XCJjb25maWRlbmNlXCI6MCxcInNwZWNpZXNDb2RlXCI6XCI1YTg2YWEyZS00NGNmLTRkN2MtYTcwZS1hZTlkYzkzZDVjM2RcIixcInR5cGVcIjpcIkJJUkRcIn0se1wiY29uZmlkZW5jZVwiOjAsXCJzcGVjaWVzQ29kZVwiOlwiMWI1MThjMjYtNDcyMi00YmQ5LWI2NzAtMTVkZTU2MzEwNGZiXCIsXCJ0eXBlXCI6XCJCSVJEXCJ9XX1dLFwibWFudWFsbHlDaGFuZ2VkTWF0Y2hUb2tlbnNcIjpbXSxcInNpZ2h0aW5nc1wiOlt7XCJpZFwiOlwiMDFmNTJmNmQtZjMyNS00YWM0LWFjNjgtMDE1NDdlOGJmMDZmXCIsXCJtYXRjaFRva2Vuc1wiOltcImEzNWI2MzQwLWU2MzItNGRhOC1hMDYzLTAyOTA4ODQzMTBiY1wiXSxcImNvdW50XCI6OTMsXCJzcGVjaWVzQ29kZVwiOlwiNWE4NmFhMmUtNDRjZi00ZDdjLWE3MGUtYWU5ZGM5M2Q1YzNkXCIsXCJfX3R5cGVcIjpcInNpZ2h0aW5nUmVjb2duaXplZFwifSx7XCJpZFwiOlwiOWYxN2JlOTQtYTdlYy00YmQxLTlmZGItODBhZTEzMzBjYjY1XCIsXCJtYXRjaFRva2Vuc1wiOltcImVhNzU3NDI4LTk2MTItNGVjNy05NWYwLTVjNDRiN2M2NTdlZlwiLFwiYjVjZDRhZWEtZjJlOS00MDg3LTljMjctMWI2YTgyMjI0MWEyXCJdLFwiY291bnRcIjo0MTAsXCJzcGVjaWVzQ29kZVwiOlwiZjc3ZmU2OGEtZTkxMC00ZTQ3LThmZWUtOWZiZWJkOGRiMmJlXCIsXCJfX3R5cGVcIjpcInNpZ2h0aW5nUmVjb2duaXplZFwifV0sXCJ1c2VySWRcIjpcImRiMmE1NzNiLTdkY2ItNDg5NC05MTQxLThjZjgwMWMxOGQ0NFwifSIsImlhdCI6MTcxMjY0NzI1OCwiZXhwIjoxNzE1MjM5MjU4fQ.pZGx3Ydt7lZkvwBYKaafF5OWLZmLeUnIVx4kOXY303o
+    sightings:
+      - id: 01f52f6d-f325-4ac4-ac68-01547e8bf06f
+        matchTokens:
+          - a35b6340-e632-4da8-a063-0290884310bc
+        __typename: SightingRecognizedBird
+        color: YELLOW
+        text: Whoa! Can't get enough? 1st time today!
+        count: 93
+        icon: HEARTS
+        shareableMatchTokens:
+          - a35b6340-e632-4da8-a063-0290884310bc
+        species:
+          id: 5a86aa2e-44cf-4d7c-a70e-ae9dc93d5c3d
+          iconUrl: >-
+            https://assets.cms-api-graphql.cms-api.prod.aws.mybirdbuddy.com/asset/icon/bird/b3145f84-b5f3-44d8-b309-773a3f6e8687_eurasian%20tree%20sparrow.svg
+          name: Eurasian Tree Sparrow
+          __typename: SpeciesBird
+          isUnofficialName: false
+          mapUrl: >-
+            https://assets.cms-api-graphql.cms-api.prod.aws.mybirdbuddy.com/asset/map/bird/72942935-701d-48ff-8a23-fd23ff4a9655_Eurasian%20Tree%20Sparrow.svg
+      - id: 9f17be94-a7ec-4bd1-9fdb-80ae1330cb65
+        matchTokens:
+          - ea757428-9612-4ec7-95f0-5c44b7c657ef
+          - b5cd4aea-f2e9-4087-9c27-1b6a822241a2
+        __typename: SightingRecognizedBird
+        color: YELLOW
+        text: Whoa! Can't get enough? 1st time today!
+        count: 410
+        icon: HEARTS
+        shareableMatchTokens:
+          - ea757428-9612-4ec7-95f0-5c44b7c657ef
+          - b5cd4aea-f2e9-4087-9c27-1b6a822241a2
+        species:
+          id: f77fe68a-e910-4e47-8fee-9fbebd8db2be
+          iconUrl: >-
+            https://assets.cms-api-graphql.cms-api.prod.aws.mybirdbuddy.com/asset/icon/bird/fac12e03-b825-446b-8aaa-c834c0582cab_house%20sparrow.svg
+          name: House Sparrow
+          __typename: SpeciesBird
+          isUnofficialName: false
+          mapUrl: >-
+            https://assets.cms-api-graphql.cms-api.prod.aws.mybirdbuddy.com/asset/map/bird/44d50b9f-1d15-41c0-83b6-4eabebedebc9_House%20Sparrow.svg
+    __typename: SightingReport
+  videoMedia:
+    id: 3cd77d73-9ff7-48eb-8ece-9ce12995c435
+    createdAt: "2024-04-09T07:15:01.246Z"
+    thumbnailUrl: >-
+      https://media.app-api-graphql.app-api.prod.aws.mybirdbuddy.com/media/feeder/5e509b96-45a1-4a81-8a0a-e9fdb8e101ea/media/3cd77d73-9ff7-48eb-8ece-9ce12995c435/THUMBNAIL.jpg?Expires=1712733658&Key-Pair-Id=K3RVEEZFTAGH36&Signature=MV1RwEr6Wnak-7%7ECzEov7ckCvhdMer%7EClWpd0m4hMMYB-C5-pvNrWYGv7jZfPe6W0YC2s0mJKRO3TIV6vLewoeJiniB-yfkgmIyYb7gi%7EXLpZnmI96I1MAP%7EM%7EJ5gwE-5oUy%7EXUYzlr1TYg35LM%7EtsIOTIT4Sp-F73OWWagjuJ1GYfJGaODFvTXgIWfO44DpbgSzxuA4Kf%7EpImOUp3F6hToHoK1D0eD0qTU8fseeUsZzRrJpaGnrDlPHEZKHzT4-uSwyDmstMyxxpHOBwKR%7Ev63n%7EkXwryaTTcLfEPdsSIg528IxiajuN6RwO1MUjjukookJbGhcuqXj%7EXbdRvtnow__
+    contentUrl: >-
+      https://media.app-api-graphql.app-api.prod.aws.mybirdbuddy.com/media/feeder/5e509b96-45a1-4a81-8a0a-e9fdb8e101ea/media/3cd77d73-9ff7-48eb-8ece-9ce12995c435/CONTENT.mp4?Expires=1712733658&Key-Pair-Id=K3RVEEZFTAGH36&Signature=rYoQtIXMB1dvBO2H2x2d5woNXnS9QFgWTcvL-iZDn6QDMMI%7EvhwFiDgPWc4XrAr-aWd57aKD1CGNu038IkEdreSVecjEFhHzK3rmrkbM44W6mZnAoj1BAFL%7EvP6nLvE%7ETRbCxR59dcv7M1tP9-PPzBIMnKo0ScmWiPFZiryblWeWEROR%7EC070YaTQZ1ngaKP18MNgwKCI6Yc9DebTn9632ynB5BReUrLiVSIpGMppV88RDOUquhbz-dzS8729VIuharS%7EuitglRt9p9ix-LYgNaTB8KdU1U3WfR2SpJA3JrlCXBEdBJAaC0ixNvn84TFFzbuzYJJMY0mUSbANe%7Eigg__
+    __typename: MediaVideo
+  __typename: SightingCreateFromPostcardResult

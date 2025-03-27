@@ -1,0 +1,4 @@
+---
+bb_event_processor:
+  module: bb_processor
+  class: BirdBuddyEventProcessor
