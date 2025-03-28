@@ -43,9 +43,9 @@ class IdentifiableModel(BaseModel):
     id: UUID4
 
     @field_serializer('id')
-    def serialize_uuid(self: UUID4) -> str:
+    def serialize_uuid(self, v: UUID4) -> str:
         """Serialize the UUID to string."""
-        return str(self)
+        return str(v)
 
 
 class Postcard(IdentifiableModel):
@@ -124,7 +124,8 @@ class SightingReport(BaseModel):
     sightings: list[SightingRecognizedBird | SightingCantDecideWhichBird]
 
     @field_validator('report_token')
-    def validate_report_token(self: SightingReport, value: str) -> str:
+    @classmethod
+    def validate_report_token(cls, value: str) -> str:
         """Validate the report token."""
         if value:
             try:
