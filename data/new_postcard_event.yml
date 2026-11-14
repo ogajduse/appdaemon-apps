@@ -1,0 +1,15 @@
+---
+# Sample `birdbuddy_new_postcard` event data (ha-birdbuddy >= 0.1.0).
+# IDs and URLs are made up.
+postcard_id: "FeedItemNewPostcard:00000000-0000-4000-8000-000000000001"
+feeder_id: "00000000-0000-4000-8000-0000000000fe"
+species:
+  - __typename: Species
+    id: "00000000-0000-4000-8000-0000000000a1"
+    name: Eurasian Tree Sparrow
+media:
+  __typename: MediaImage
+  id: "00000000-0000-4000-8000-0000000000b1"
+  createdAt: "2026-11-14T08:00:00.000Z"
+  thumbnailUrl: "https://example.com/postcard/thumb.jpg"
+  contentUrl: "https://example.com/postcard/full.jpg"
