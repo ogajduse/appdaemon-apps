@@ -6,20 +6,26 @@ A collection of AppDaemon applications for Home Assistant that enhance its funct
 
 ### Bird Buddy Automation
 
-An automation that processes Bird Buddy smart bird feeder events, identifies bird species in images, and creates rich notifications.
+Turns Bird Buddy postcard events into a ready-made Slack message.
+
+Requires the [ha-birdbuddy](https://github.com/jhansche/ha-birdbuddy) integration
+**v0.1.0 or newer**.
 
 #### Features
 
-- **Event Processing**: Listens for `birdbuddy_new_postcard_sighting` events from Home Assistant
-- **Bird Identification**: Processes Bird Buddy sighting data for recognized birds and uncertain identifications
-- **Media Handling**: Associates images with specific bird sightings
-- **Rich Notifications**: Creates formatted messages for Slack with:
-  - Bird species information
-  - Multiple images of the sighting
-  - Wikipedia lookup for additional species information
-  - Range maps for bird species
-  - Support for video content (in progress)
-- **Full Pydantic Models**: Complete type-validated models for Bird Buddy API data
+- **Event Processing**: Listens for `birdbuddy_new_postcard` events from Home Assistant
+  (payload: `postcard_id`, `feeder_id`, `species` as `{id, name}`, first `media`)
+- **Rich Notifications**: Builds Slack blocks with the species names, a Wikipedia link
+  per species (best effort), and the postcard image
+- **Report Event**: Fires `birdbuddy_new_postcard_sighting_report` with `report`,
+  `title` and `slack_message`, for a Home Assistant automation to post via `notify`
+
+> **Important:** the integration only fires `birdbuddy_new_postcard` when Home Assistant
+> itself has a listener for it (an automation with an event or device trigger on it).
+> AppDaemon's subscription does not count, so keep such an automation enabled.
+
+Since v0.1.0 the event no longer carries species icons, range maps, the video, or
+more than one image, so those parts of the message are gone.
 
 ### Additional Apps
 
@@ -36,7 +42,7 @@ _More apps will be added to this repository as they are developed._
 ### Global Dependencies
 
 ```bash
-pip install pydantic pyjwt pydantic-yaml slackblocks wikipedia
+pip install pydantic pydantic-yaml slackblocks wikipedia
 ```
 
 ### App-Specific Setup
@@ -57,12 +63,10 @@ bb_event_processor:
 
 When a bird visits your Bird Buddy feeder, the automation will:
 
-1. Receive the event data from Home Assistant
-2. Process the bird sighting information
-3. Match images to the detected birds
-4. Create a report with all birds and their details
-5. Format a message for Slack with images and context
-6. Emit a new event with the processed information
+1. Receive the `birdbuddy_new_postcard` event from Home Assistant
+2. Summarize the recognized species and the postcard image
+3. Format a Slack message with names, Wikipedia links and the image
+4. Fire `birdbuddy_new_postcard_sighting_report` with the report and the message
 
 ## Repository Structure
 
@@ -72,11 +76,7 @@ apps/                  # AppDaemon apps
   apps.yaml            # AppDaemon configuration
   bb_processor.py      # Bird Buddy automation
 data/                  # Sample data for testing
-  birds_event.yml
-  birds_event.json
-  birds_event_two_birds.yml
-scripts/               # Utility scripts
-  blocks.py            # Slack blocks helper
+  new_postcard_event.yml
 tests/                 # Test suite
   test_bb_processor.py
 ```

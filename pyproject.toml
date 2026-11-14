@@ -17,7 +17,7 @@ description = "Lovely Spam! Wonderful Spam!"
 authors = [{ name = "Ondrej Gajdusek", email = "ondrej@gajdusek.dev" }]
 maintainers = [{ name = "Ondrej Gajdusek", email = "ondrej@gajdusek.dev" }]
 
-dependencies = ["pydantic", "pyjwt", "pydantic-yaml", "slackblocks", "wikipedia"]
+dependencies = ["pydantic", "pydantic-yaml", "slackblocks", "wikipedia"]
 
 [project.optional-dependencies]
 lint = ["pre-commit", "ruff"]

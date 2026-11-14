@@ -1,349 +1,160 @@
-"""Home Assistant automation script to parse an incoming event."""
+"""Turn Bird Buddy postcard events into a Slack report event.
+
+Listens for ``birdbuddy_new_postcard`` (ha-birdbuddy >= 0.1.0) and fires
+``birdbuddy_new_postcard_sighting_report`` with a ready-made Slack message,
+which a Home Assistant automation posts with ``notify.*``.
+
+The 0.1.0 payload is slim: ``postcard_id``, ``feeder_id``, a list of
+recognized ``species`` (``{"id", "name"}`` only) and the first ``media`` item
+(or ``null``). Species icons, range maps, extra images and the video are no
+longer part of the event.
+
+Note: the integration only fires the event when Home Assistant itself has a
+listener for ``birdbuddy_new_postcard`` (an automation trigger). AppDaemon's
+catch-all subscription does not count, so keep an HA automation on it.
+"""
 
 from __future__ import annotations
 
-import json
-from datetime import datetime
 from functools import cached_property
 from pathlib import Path
-from typing import Annotated
 
 import appdaemon.plugins.hass.hassapi as hass
-import jwt
 import wikipedia
-from pydantic import (
-    UUID4,
-    BaseModel,
-    Field,
-    HttpUrl,
-    PlainSerializer,
-    field_serializer,
-    field_validator,
-)
+from pydantic import BaseModel, ConfigDict, Field, HttpUrl
 from pydantic_yaml import parse_yaml_raw_as
 from slackblocks import (
     ContextBlock,
     DividerBlock,
     HeaderBlock,
-    Image,
     ImageBlock,
     Message,
     SectionBlock,
     Text,
 )
 
-BBHttpUrl = Annotated[
-    HttpUrl, PlainSerializer(lambda u: str(u) if u else u, return_type=str)
-]
+SLACK_CHANNEL = '#general'  # Only needed to build a Message; notify sets it.
+HEADER_MAX = 150  # Slack header text limit
+IMAGE_TITLE_MAX = 2000  # Slack image block title limit
 
 
-class IdentifiableModel(BaseModel):
-    """Base model for identifiable models."""
+class Species(BaseModel):
+    """A recognized species as carried by the event."""
 
-    id: UUID4
+    model_config = ConfigDict(extra='ignore')
 
-    @field_serializer('id')
-    def serialize_uuid(self, v: UUID4) -> str:
-        """Serialize the UUID to string."""
-        return str(v)
-
-
-class Postcard(IdentifiableModel):
-    """Postcard model."""
-
-    created_at: datetime = Field(..., alias='createdAt')
-
-
-class Feeder(IdentifiableModel):
-    """Feeder model."""
-
+    id: str
     name: str
-    state: str
 
 
-class Media(IdentifiableModel):
-    """Media model."""
+class Media(BaseModel):
+    """The first postcard media item, in Bird Buddy's own key spelling."""
 
-    created_at: datetime = Field(..., alias='createdAt')
-    thumbnail_url: BBHttpUrl = Field(..., alias='thumbnailUrl')
-    content_url: BBHttpUrl = Field(..., alias='contentUrl')
+    model_config = ConfigDict(extra='ignore', populate_by_name=True)
 
+    id: str
+    thumbnail_url: HttpUrl = Field(..., alias='thumbnailUrl')
+    content_url: HttpUrl | None = Field(default=None, alias='contentUrl')
 
-class ImageMedia(Media):
-    """Image media model."""
-
-
-class VideoMedia(Media):
-    """Video media model."""
-
-
-class Species(IdentifiableModel):
-    """Species model."""
-
-    icon_url: BBHttpUrl = Field(..., alias='iconUrl')
-    name: str
-    is_unofficial_name: bool = Field(..., alias='isUnofficialName')
-    map_url: BBHttpUrl = Field(..., alias='mapUrl')
+    @property
+    def best_url(self: Media) -> str:
+        """Full-size URL when present, otherwise the thumbnail."""
+        return str(self.content_url or self.thumbnail_url)
 
 
-class SightingRecognizedBird(IdentifiableModel):
-    """Sighting recognized bird model.
+class NewPostcardEvent(BaseModel):
+    """Payload of the ``birdbuddy_new_postcard`` event."""
 
-    This model is used to represent a bird that was sighted.
-    """
+    model_config = ConfigDict(extra='ignore')
 
-    match_tokens: list[UUID4] = Field(..., alias='matchTokens')
-    color: str
-    text: str
-    count: int
-    icon: str
-    shareable_match_tokens: list[UUID4] = Field(..., alias='shareableMatchTokens')
-    species: Species
-
-
-class Suggestion(BaseModel):
-    """Model for a bird suggestion."""
-
-    is_collected: bool = Field(..., alias='isCollected')
-    species: Species
-    media: ImageMedia | None = None
-
-
-class SightingCantDecideWhichBird(IdentifiableModel):
-    """Model for sightings where the bird type can't be confidently determined."""
-
-    match_tokens: list[UUID4] = Field(..., alias='matchTokens')
-    suggestions: list[Suggestion]
-    typename: str = Field(default='SightingCantDecideWhichBird', alias='__typename')
-
-
-class SightingReport(BaseModel):
-    """Sighting report model."""
-
-    report_token: str = Field(..., alias='reportToken')
-    sightings: list[SightingRecognizedBird | SightingCantDecideWhichBird]
-
-    @field_validator('report_token')
-    @classmethod
-    def validate_report_token(cls, value: str) -> str:
-        """Validate the report token."""
-        if value:
-            try:
-                decoded = jwt.decode(value, options={'verify_signature': False})
-            except jwt.exceptions.PyJWTError as e:
-                msg = 'Invalid JWT token'
-                raise ValueError(msg) from e
-        return json.loads(decoded['reportToken'])
-
-
-class BaseSighting(BaseModel):
-    """Sighting model."""
-
-    feeder: Feeder
-    medias: list[ImageMedia]
-    sighting_report: SightingReport = Field(..., alias='sightingReport')
-    video_media: VideoMedia = Field(..., alias='videoMedia')
-
-
-class BBEventModel(BaseModel):
-    """Model for the incoming event."""
-
-    postcard: Postcard
-    sighting: BaseSighting
-
-
-class SightedBird(BaseModel):
-    """Model for sighted bird with media assigned.
-
-    This model is used to model the data in the automation report.
-    """
-
-    species: Species
-    image_urls: list[BBHttpUrl] | list[None] = []
-    video_media: VideoMedia
-
-    def create_slack_blocks(
-        self: SightedBird,
-        feeder_name: str = 'Unknown',  # noqa: ARG002
-    ) -> list[dict]:
-        """Create Slack blocks for a single bird sighting."""
-        species = self.species
-        ### Context Block ###
-        context_block = ContextBlock(
-            elements=[
-                Image(
-                    image_url=str(species.icon_url),
-                    alt_text=species.name,
-                ),
-                Text(f'*{species.name}*'),
-            ],
-        )
-
-        ### Section Block ###
-        wiki_search = wikipedia.search(species.name)
-        # Best effort to get the summary of the species
-        if wiki_search:
-            wiki_page = wikipedia.page(wiki_search[0])
-            bird_summary = f'*<{wiki_page.url}|{wiki_page.title}>*\n'
-        else:
-            bird_summary = f'{species.name} was sighted!'
-
-        section_block = SectionBlock(
-            text=bird_summary,
-            accessory=Image(
-                image_url=str(species.map_url),
-                alt_text=f'You can spot {species.name} in the highlighted area.',
-            ),
-        )
-        ### Image Block(s) ###
-        image_blocks = []
-        for count, media_url in enumerate(self.image_urls):
-            image_blocks.append(
-                ImageBlock(
-                    title=f'{self.species.name} was sighted!',
-                    image_url=str(media_url),
-                    alt_text=f'{self.species.name}-{count + 1}',
-                )
-            )
-
-        ### Video Block ###
-        # TODO: Uncomment when ready to use the video block
-        # video_block = {
-        #     'type': 'video',
-        #     'title': {
-        #         'type': 'plain_text',
-        #         'text': f'Watch the video of {species.name}',
-        #         'emoji': True,
-        #     },
-        #     'title_url': str(self.video_media.content_url),
-        #     'description': {
-        #         'type': 'plain_text',
-        #         'text': f'Here is a video of {species.name} '
-        #         'captured during the sighting.',
-        #         'emoji': True,
-        #     },
-        #     'video_url': str(self.video_media.content_url),
-        #     'alt_text': f'Video of {species.name} sighted at {feeder_name}.',
-        #     'thumbnail_url': str(self.video_media.thumbnail_url),
-        #     'author_name': f'{feeder_name} bird feeder',
-        #     'provider_icon_url': 'https://mybirdbuddy.com/wp-content/uploads/2023/06/cropped-Birdbuddy_favicon_64x64-32x32.png',
-        # }
-
-        message = Message(
-            channel='#general',
-            blocks=[
-                context_block,
-                section_block,
-                *image_blocks,
-            ],
-        )
-        dict_message = message.to_dict()
-        # Hack to add video block to the message
-        # TODO: fix the video block
-        # dict_message['blocks'].append(video_block)
-        return dict_message['blocks']
+    postcard_id: str
+    feeder_id: str | None = None
+    species: list[Species] = []
+    media: Media | None = None
 
 
 class AutomationReport(BaseModel):
-    """Automation report model."""
+    """Compact report fired alongside the Slack message."""
 
-    feeder: Feeder
-    birds_sighted: list[SightedBird] | list[None] = []
+    postcard_id: str
+    feeder_id: str | None
+    species: list[str]
+    image_url: str | None
+
+
+def wikipedia_link(name: str) -> str | None:
+    """Return a Slack mrkdwn link to the species' Wikipedia page, best effort."""
+    try:
+        results = wikipedia.search(name)
+        if not results:
+            return None
+        page = wikipedia.page(results[0], auto_suggest=False)
+    except Exception:  # noqa: BLE001 - lookup failures must not drop the post
+        return None
+    return f'*<{page.url}|{page.title}>*'
 
 
 class ReportFormatter:
-    """Report formatter.
+    """Build the report and the Slack blocks from one postcard event."""
 
-    Format the report data for the Home Assistant automation.
-    Output of this formatter is a list that contains list of medias.
-    For each media, it contains the name of the bird/birds
-    that were sighted and the URL of the media.
-    """
-
-    def __init__(self: ReportFormatter, model: BBEventModel) -> None:
+    def __init__(self: ReportFormatter, event: NewPostcardEvent) -> None:
         """Initialize the formatter."""
-        self.model = model
+        self.event = event
 
     @classmethod
-    def from_yaml(cls: ReportFormatter, file_path: str) -> ReportFormatter:
-        """Create a formatter from a file."""
-        return cls(parse_yaml_raw_as(BBEventModel, Path(file_path).read_text()))
+    def from_yaml(cls: type[ReportFormatter], file_path: str) -> ReportFormatter:
+        """Create a formatter from a YAML file holding the event data."""
+        return cls(parse_yaml_raw_as(NewPostcardEvent, Path(file_path).read_text()))
 
     @cached_property
     def report(self: ReportFormatter) -> AutomationReport:
-        """Create a formatted list of sightings.
+        """Summarize the postcard."""
+        return AutomationReport(
+            postcard_id=self.event.postcard_id,
+            feeder_id=self.event.feeder_id,
+            species=[s.name for s in self.event.species],
+            image_url=self.event.media.best_url if self.event.media else None,
+        )
 
-        Create list of sightings with the name of the bird/birds and
-        assign the URL of the media on which the bird was sighted.
-        """
-        report = AutomationReport(feeder=self.model.sighting.feeder)
-        for sighting in self.model.sighting.sighting_report.sightings:
-            media_urls = []
-            for media in self.model.sighting.medias:
-                if media.id in sighting.match_tokens:
-                    media_urls.append(media.content_url)
-
-            # Handle different types of sightings
-            if isinstance(sighting, SightingRecognizedBird):
-                # This is a recognized bird
-                report.birds_sighted.append(
-                    SightedBird(
-                        species=sighting.species,
-                        image_urls=media_urls,
-                        video_media=self.model.sighting.video_media,
-                    )
-                )
-            if (
-                hasattr(sighting, 'suggestions')
-                and sighting.suggestions
-                and len(sighting.suggestions) > 0
-            ):
-                # This is a SightingCantDecideWhichBird
-                # Use the first suggestion's species as our best guess
-                report.birds_sighted.append(
-                    SightedBird(
-                        species=sighting.suggestions[0].species,
-                        image_urls=media_urls,
-                        video_media=self.model.sighting.video_media,
-                    )
-                )
-        return report
+    @property
+    def title(self: ReportFormatter) -> str:
+        """One-line title, also usable as the notification fallback text."""
+        names = self.report.species
+        if not names:
+            return 'New visitor at the feeder!'
+        if len(names) == 1:
+            return f'New bird sighting: {names[0]}!'
+        return f'New bird sighting! {len(names)} birds: {", ".join(names)}'
 
     def format_slack_message(self: ReportFormatter) -> list[dict]:
-        """Create a formatted Slack message."""
-        message_blocks = []
-        birds_count = len(self.report.birds_sighted)
-        bird_text = 'bird' if birds_count == 1 else 'birds'
-        header_block = HeaderBlock(
-            f'New Bird Sighting! {birds_count} {bird_text} sighted!'
-        )
-        divider = DividerBlock()
-        message = Message(
-            channel='#general',
-            blocks=[header_block, divider],
-        )
-        dict_message = message.to_dict()
-        message_blocks.extend(dict_message['blocks'])
-        for bird in self.report.birds_sighted:
-            message_blocks.extend(
-                bird.create_slack_blocks(feeder_name=self.report.feeder.name)
+        """Create the Slack blocks."""
+        blocks = [HeaderBlock(self.title[:HEADER_MAX]), DividerBlock()]
+        for species in self.event.species:
+            blocks.append(ContextBlock(elements=[Text(f'*{species.name}*')]))
+            link = wikipedia_link(species.name)
+            if link:
+                blocks.append(SectionBlock(text=link))
+        if self.report.image_url:
+            blocks.append(
+                ImageBlock(
+                    image_url=self.report.image_url,
+                    alt_text=', '.join(self.report.species) or 'Bird Buddy postcard',
+                    title=self.title[:IMAGE_TITLE_MAX],
+                )
             )
-        return message_blocks
+        return Message(channel=SLACK_CHANNEL, blocks=blocks).to_dict()['blocks']
 
 
 class BirdBuddyEventProcessor(hass.Hass):
     """Bird Buddy event processor."""
 
     emit_event_name = 'birdbuddy_new_postcard_sighting_report'
-    listen_event_name = 'birdbuddy_new_postcard_sighting'
-    listen_event_handle_list: list = []  # noqa: RUF012
+    listen_event_name = 'birdbuddy_new_postcard'
 
     def initialize(self: BirdBuddyEventProcessor) -> None:
-        """Initialize the event processor."""
-        self.log(f'watching event "{self.listen_event_name}" for state changes')
-        self.listen_event_handle_list.append(
-            self.listen_event(self.process_event, self.listen_event_name)
-        )
+        """Subscribe to the postcard event (AppDaemon cancels it on reload)."""
+        self.log('Watching event "%s"', self.listen_event_name)
+        self.listen_event(self.process_event, self.listen_event_name)
 
     def process_event(
         self: BirdBuddyEventProcessor,
@@ -351,29 +162,20 @@ class BirdBuddyEventProcessor(hass.Hass):
         data: dict,
         kwargs: dict,  # noqa: ARG002
     ) -> None:
-        """Process the incoming event."""
-        self.log('Processing the incoming event %s', event_name)
-        formatter = ReportFormatter(BBEventModel(**data))
-        self.log('Report to send: %s', formatter.report)
+        """Process one postcard event and fire the report event."""
+        self.log('Processing event %s', event_name)
+        formatter = ReportFormatter(NewPostcardEvent.model_validate(data))
         report = formatter.report.model_dump()
-        self.log('Report dumped successfully')
-        slack_message = formatter.format_slack_message()
-        self.log('Slack message created successfully')
-        json.dumps(slack_message)  # Is this necessary?
-        self.log('About to fire an %s event', self.emit_event_name)
+        self.log('Report: %s', report)
         self.fire_event(
             self.emit_event_name,
             report=report,
-            slack_message=slack_message,
+            title=formatter.title,
+            slack_message=formatter.format_slack_message(),
         )
-
-    def terminate(self: BirdBuddyEventProcessor) -> None:
-        """Cancel all active listen event handles."""
-        for listen_event_handle in self.listen_event_handle_list:
-            self.cancel_listen_event(listen_event_handle)
 
 
 if __name__ == '__main__':
-    formatter: ReportFormatter = ReportFormatter.from_yaml('birds_event.yml')
-    report: AutomationReport = formatter.report
-    slack_message = formatter.format_slack_message()
+    fmt = ReportFormatter.from_yaml('data/new_postcard_event.yml')
+    print(fmt.report)
+    print(fmt.format_slack_message())
